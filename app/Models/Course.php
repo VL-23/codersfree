@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
+
+    protected $guarded = ['id','status'];
+
     use HasFactory;
 
     const BORRADOR = 1;
@@ -56,6 +59,13 @@ class Course extends Model
         return $this->belongsToMany('App\Models\User');
     }
 
+    // Realción uno a uno polimorfica
+    public function image(){
+        return $this->morphOne('App\Models\Image','imageable');
+    }
 
+    public function lessons(){
+        return $this->hasManyThrough('App\Models\Lesson','App\Models\Section');
+    }
 
 }

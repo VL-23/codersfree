@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
+
+    protected $guarded = ['id'];
+
     use HasFactory;
 
     // Relación uno a uno
@@ -26,6 +29,20 @@ class Lesson extends Model
     // Relación muchos a muchos
     public function users(){
         return $this->belongsToMany('App\Models\User');
+    }
+
+    // Realción uno a uno polimorfica
+    public function resource(){
+        return $this->morphOne('App\Models\Resource','resourceable');
+    }
+
+    // Relación uno a muchos polimorfica
+    public function comments(){
+        return $this->morphMany('App\Models\Comment','commentable');
+    }
+
+    public function reactions(){
+        return $this->morphMany('App\Models\Reaction','reactionable');
     }
 
 }

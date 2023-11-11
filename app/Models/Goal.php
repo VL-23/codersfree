@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Goal extends Model
 {
+
+    protected $guarded = ['id'];
+
     use HasFactory;
 
     // Relación uno a muchos inversa
