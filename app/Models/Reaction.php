@@ -18,6 +18,7 @@ class Reaction extends Model
     // Relación uno a muchos inversa
     public function user(){
         return $this->belongsTo('App\Models\User');
+        // return $this->belongsTo(User::class);
     }
 
     public function reactionable(){

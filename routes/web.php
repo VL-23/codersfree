@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', HomeController::class)->name('home');
 
 Route::middleware([
     'auth:sanctum',
@@ -26,3 +25,11 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('cursos', function(){
+    return "Aqui se mostrará la lista de cursos";
+})->name('courses.index');
+
+Route::get('cursos/{courses}', function(){
+    return "Aquí se va a mostar la información del curso";
+})->name('course.show');

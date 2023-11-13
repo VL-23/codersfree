@@ -62,33 +62,40 @@ class User extends Authenticatable
     // Relación uno a uno
     public function profile(){
         return $this->hasOne('App\Models\Profile');
+        // return $this->hasOne(Profile::class);
     }
 
     // Relación uno a muchos
     public function courses_dictated(){
         return $this->hasMany('App\Models\Course');
+        // return $this->hasMany(Course::class);
     }
 
     public function reviews(){
         return $this->hasMany('App\Models\Review');
+        // return $this->hasMany(Review::class);
     }
 
     public function comments(){
         return $this->hasMany('App\Models\Comment');
+        // return $this->hasMany(Comment::class);
     }
 
     public function reactions(){
         return $this->hasMany('App\Models\Reaction');
+        // return $this->hasMany(Reaction::class);
     }
     
 
     // Relación muchos a muchos
     public function courses_enrrolled(){
         return $this->belongsToMany('App\Models\Course');
+        // return $this->belongsToMany(Course::class);
     }
 
     public function lessons(){
         return $this->belongsToMany('App\Models\Lesson');
+        // return $this->belongsToMany(Lesson::class);
     }
 
 }
