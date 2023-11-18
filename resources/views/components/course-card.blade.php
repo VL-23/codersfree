@@ -1,13 +1,11 @@
 @props(['course'])
 
-<article class="bd-white shadow-lg rounded overflow-hidden">
-    {{-- {{$course->image->url}} --}}
-    {{ $course->image ? Storage::url($course->image->url) : 'https://imagen_prueba.com' }}
-    {{-- {{ Storage::url($course->image->url) }} --}}
+<article class="card">
+    <img class="h-36 w-full object-cover" src="{{ $course->image ? Storage::url($course->image->url) : 'https://static.fundacion-affinity.org/cdn/farfuture/PVbbIC-0M9y4fPbbCsdvAD8bcjjtbFc0NSP3lRwlWcE/mtime:1643275542/sites/default/files/los-10-sonidos-principales-del-perro.jpg' }} " alt="">
     {{-- <img class="h-36 w-full object-cover" src="{{ Storage::url($course->image->url) }}" alt=""> --}}
-    <div class="px-6 py-4">
-        <h1 class="text-xl textgray-700 mb-2 leading-6">{{ Str::limit($course->title,40) }}</h1>
-        {{-- <p class="text-gray-500 text-sm mb-2">Prof: {{ $course->teache->name }}</p> --}}
+    <div class="card-body">
+        <h1 class="card-title">{{ Str::limit($course->title,40) }}</h1>
+        <p class="text-gray-500 text-sm mb-2">Prof: {{ $course->teacher->name }}</p>
 
         <div class="flex">
             <ul class="flex text-sm">
@@ -35,7 +33,7 @@
             
         </div>
         
-        <a href="{{route('courses.show', $course)}}" class="block text-center w-full mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <a href="{{route('courses.show', $course)}}" class="mt-4 btn btn-primary btn-block">
             Más información
         </a>
 

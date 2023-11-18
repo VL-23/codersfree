@@ -102,7 +102,7 @@ class Course extends Model
 
     public function lessons(){
         return $this->hasManyThrough('App\Models\Lesson','App\Models\Section');
-        // return $this->hasManyThrough(Section::class,'App\Models\Section');
+        // return $this->hasManyThrough(Lesson::class,Section::class);
     }
 
 }
