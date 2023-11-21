@@ -36,5 +36,5 @@ Route::get('cursos/{course}', [CourseController::class, 'show'])->name('courses.
 Route::post('courses/{course}/enrolled', [CourseController::class, 'enrolled'])->middleware('auth')->name('courses.enrolled');
 
 // Componente de pagina completa (para que la pagina completa sea reactiva)
-Route::get('course-status/{course}', CourseStatus::class)->name('courses.status');
+Route::get('course-status/{course}', CourseStatus::class)->name('courses.status')->middleware('auth');
 
