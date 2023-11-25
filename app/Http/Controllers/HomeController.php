@@ -11,7 +11,6 @@ class HomeController extends Controller
     {
 
         $courses = Course::where('status','3')->latest('id')->get()->take(12);
-
         // return $courses;
 
         // return Course::find(39)->rating;

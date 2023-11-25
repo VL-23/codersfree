@@ -6,11 +6,11 @@
     @apply block text-center w-full;
 }
 
-.btn-primary {
+.btn-primary, input[type=submit].btn-primary {
     @apply bg-blue-500 text-white;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, input[type=submit].btn-primary:hover {
     @apply bg-blue-700;
 }
 

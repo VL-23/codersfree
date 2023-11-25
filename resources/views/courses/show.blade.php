@@ -3,8 +3,11 @@
     <section class="bg-gray-700 py-12 mb-12">
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">
             <figure>
-                {{-- <img class="h-600 w-full object-cover" src="{{Storage::url($course->image->url)}}" alt=""> --}}
-                <img class="h-600 w-full object-cover" src="{{$course->image ? Storage::url($course->image->url) : 'https://static.fundacion-affinity.org/cdn/farfuture/PVbbIC-0M9y4fPbbCsdvAD8bcjjtbFc0NSP3lRwlWcE/mtime:1643275542/sites/default/files/los-10-sonidos-principales-del-perro.jpg'}}" alt="">
+                @isset($course->image)
+                    <img class="h-600 w-full object-cover" src="{{Storage::url($course->image->url)}}" alt="">
+                @else
+                    <img class="h-600 w-full object-cover" src="https://static.fundacion-affinity.org/cdn/farfuture/PVbbIC-0M9y4fPbbCsdvAD8bcjjtbFc0NSP3lRwlWcE/mtime:1643275542/sites/default/files/los-10-sonidos-principales-del-perro.jpg" alt="">
+                @endisset
             </figure>
 
             <div class="text-white">
@@ -117,8 +120,11 @@
             <aside class="hidden lg:block">
                 @foreach ($similares as $similar)
                     <article class="flex mb-6">
-                        {{-- <img class="h-32 w-40 object-cover" src="{{Storage::url($similar->image->url)}}" alt=""> --}}
-                        <img class="h-32 w-40 object-cover" src="{{$course->image ? Storage::url($course->image->url) : 'https://static.fundacion-affinity.org/cdn/farfuture/PVbbIC-0M9y4fPbbCsdvAD8bcjjtbFc0NSP3lRwlWcE/mtime:1643275542/sites/default/files/los-10-sonidos-principales-del-perro.jpg'}}" alt="">
+                        @isset($course->image)
+                            <img class="h-32 w-40 object-cover" src="{{Storage::url($course->image->url)}}" alt="">
+                        @else
+                            <img class="h-32 w-40 object-cover" src="https://static.fundacion-affinity.org/cdn/farfuture/PVbbIC-0M9y4fPbbCsdvAD8bcjjtbFc0NSP3lRwlWcE/mtime:1643275542/sites/default/files/los-10-sonidos-principales-del-perro.jpg" alt="">
+                        @endisset
 
                         <div class="ml-3">
                             <h1>

@@ -1,8 +1,13 @@
 @props(['course'])
 
 <article class="card">
-    <img class="h-36 w-full object-cover" src="{{ $course->image ? Storage::url($course->image->url) : 'https://static.fundacion-affinity.org/cdn/farfuture/PVbbIC-0M9y4fPbbCsdvAD8bcjjtbFc0NSP3lRwlWcE/mtime:1643275542/sites/default/files/los-10-sonidos-principales-del-perro.jpg' }} " alt="">
-    {{-- <img class="h-36 w-full object-cover" src="{{ Storage::url($course->image->url) }}" alt=""> --}}
+
+    @isset($course->image)
+        <img class="h-36 w-full object-cover" src="{{ Storage::url($course->image->url) }} " alt="">
+    @else
+        <img class="h-36 w-full object-cover" src="https://static.fundacion-affinity.org/cdn/farfuture/PVbbIC-0M9y4fPbbCsdvAD8bcjjtbFc0NSP3lRwlWcE/mtime:1643275542/sites/default/files/los-10-sonidos-principales-del-perro.jpg " alt="">
+    @endisset
+
     <div class="card-body">
         <h1 class="card-title">{{ Str::limit($course->title,40) }}</h1>
         <p class="text-gray-500 text-sm mb-2">Prof: {{ $course->teacher->name }}</p>

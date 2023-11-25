@@ -126,9 +126,17 @@
                                     Perfil
                                 </x-dropdown-link>
 
-                                <x-dropdown-link href="{{ route('instructor.courses.index') }}">
-                                    Instructor
-                                </x-dropdown-link>
+                                @can('Leer cursos')
+                                    <x-dropdown-link href="{{ route('instructor.courses.index') }}">
+                                        Instructor
+                                    </x-dropdown-link>
+                                @endcan
+                                
+                                 @can('Ver dashboard')
+                                    <x-dropdown-link href="{{ route('admin.home') }}">
+                                        Administrador
+                                    </x-dropdown-link>
+                                @endcan
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                     <x-dropdown-link href="{{ route('api-tokens.index') }}">
@@ -205,10 +213,17 @@
                         Perfil
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link href="{{ route('instructor.courses.index') }}" :active="request()->routeIs('instructor.courses.index')">
-                        Instructor
-                    </x-responsive-nav-link>
-
+                    @can('Leer cursos')
+                        <x-responsive-nav-link href="{{ route('instructor.courses.index') }}" :active="request()->routeIs('instructor.courses.index')">
+                            Instructor
+                        </x-responsive-nav-link>
+                    @endcan
+                    
+                    @can('Ver dashboard')
+                        <x-responsive-nav-link href="{{ route('admin.home') }}" :active="request()->routeIs('admin.home')">
+                            Administrador
+                        </x-responsive-nav-link>
+                    @endcan
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                             {{ __('API Tokens') }}
