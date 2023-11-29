@@ -41,6 +41,11 @@ class Course extends Model
         return "slug";
     }
 
+    // Relación unno a unno
+    public function observation(){
+        return $this->hasOne('App\Models\Observation');
+    }
+
     // Relación uno a muchos
     public function reviews(){
         return $this->hasMany('App\Models\Review');

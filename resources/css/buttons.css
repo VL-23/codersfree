@@ -6,18 +6,18 @@
     @apply block text-center w-full;
 }
 
-.btn-primary, input[type=submit].btn-primary {
+.btn-primary, input[type=submit].btn-primary, button[type=submit].btn-primary {
     @apply bg-blue-500 text-white;
 }
 
-.btn-primary:hover, input[type=submit].btn-primary:hover {
+.btn-primary:hover, input[type=submit].btn-primary:hover, button[type=submit].btn-primary:hover {
     @apply bg-blue-700;
 }
 
-.btn-danger {
+.btn-danger, button[type=button].btn-danger, button[type=submit].btn-danger {
     @apply bg-red-500 text-white;
 }
 
-.btn-danger:hover {
+.btn-danger:hover, button[type=button].btn-danger:hover, button[type=submit].btn-danger:hover {
     @apply bg-red-700;
 }
