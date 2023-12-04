@@ -14,12 +14,12 @@ class Review extends Model
 
     // Relación uno a muchos inversa
     public function user(){
-        return $this->belongsTo('App\Model\User');
+        return $this->belongsTo('App\Models\User');
         // return $this->belongsTo(User::class);
     }
 
     public function course(){
-        return $this->belongsTo('App\Model\Course');
+        return $this->belongsTo('App\Models\Course');
         // return $this->belongsTo(Course::class);
     }
 

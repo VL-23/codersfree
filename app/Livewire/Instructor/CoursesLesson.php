@@ -17,6 +17,7 @@ class CoursesLesson extends Component
         'lesson.platform_id' => 'required',
         'lesson.url' => ['required','regex:%^ (?:https?://)? (?:www\.)? (?: youtu\.be/ | youtube\.com (?: /embed/ | /v/ | /watch\?v= ) ) ([\w-]{10,12}) $%x']
     ];
+    
     public function mount(Section $section){
         $this->section = $section;
 
@@ -35,7 +36,7 @@ class CoursesLesson extends Component
         $rules = [
             'name' => 'required',
             'platform_id' => 'required',
-            'url' => ['required','regex:%^ (?:https?://)? (?:www\.)? (?: youtu\.be/ | youtube\.com (?: /embed/ | /v/ | /watch\?v= ) ) ([\w-]{10,12}) $%x']
+            'url'       => ['required', 'regex:%^ (?:https?://)? (?:www\.)? (?: youtu\.be/ | youtube\.com (?: /embed/ | /v/ | /watch\?v= ) ) ([\w-]{10,12}) $%x']
         ];
 
         if( $this->platform_id == 2 )

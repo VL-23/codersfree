@@ -1,16 +1,16 @@
 @props(['course'])
 
-<article class="card">
+<article class="flex flex-col card">
 
     @isset($course->image)
-        <img class="h-36 w-full object-cover" src="{{ Storage::url($course->image->url) }} " alt="">
+        <img class="object-cover w-full h-36" src="{{ Storage::url($course->image->url) }} " alt="">
     @else
-        <img class="h-36 w-full object-cover" src="https://static.fundacion-affinity.org/cdn/farfuture/PVbbIC-0M9y4fPbbCsdvAD8bcjjtbFc0NSP3lRwlWcE/mtime:1643275542/sites/default/files/los-10-sonidos-principales-del-perro.jpg " alt="">
+        <img class="object-cover w-full h-36" src="https://static.fundacion-affinity.org/cdn/farfuture/PVbbIC-0M9y4fPbbCsdvAD8bcjjtbFc0NSP3lRwlWcE/mtime:1643275542/sites/default/files/los-10-sonidos-principales-del-perro.jpg " alt="">
     @endisset
 
-    <div class="card-body">
+    <div class="flex flex-col flex-1 card-body">
         <h1 class="card-title">{{ Str::limit($course->title,40) }}</h1>
-        <p class="text-gray-500 text-sm mb-2">Prof: {{ $course->teacher->name }}</p>
+        <p class="mt-auto mb-2 text-sm text-gray-500">Prof: {{ $course->teacher->name }}</p>
 
         <div class="flex">
             <ul class="flex text-sm">
@@ -31,14 +31,24 @@
                 </li>
             </ul>
 
-            <p class="text-sm text-gray-500 ml-auto">
+            <p class="ml-auto text-sm text-gray-500">
                 <i class="fas fa-users"></i>
                 ({{$course->students_count}})
             </p>
             
         </div>
+
+        @if ($course->price->value == 0)
+            <p class="my-2 text-sm font-bold text-green-800 ">
+                GRATIS
+            </p>
+        @else
+            <p class="my-2 text-sm font-bold text-gray-500 ">
+                US$ {{ $course->price->value }}
+            </p>
+        @endif
         
-        <a href="{{route('courses.show', $course)}}" class="mt-4 btn btn-primary btn-block">
+        <a href="{{route('courses.show', $course)}}" class="btn btn-primary btn-block">
             Más información
         </a>
 

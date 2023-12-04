@@ -9,7 +9,7 @@ class Observation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['body'];
+    protected $fillable = ['body', 'course_id'];
 
     // Relación uno a uno inversa
     public function course(){

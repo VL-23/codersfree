@@ -1,23 +1,23 @@
 <div>
     
-    <div class="bg-gray-200 py-4 mb-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex">
-            <button class="focus:outline-none bg-white shadow h-12 px-4 rounded-lg text-gray-700 mr-4" wire:click="resetFilters">
-                <i class="fas fa-archway text-xs mr-2"></i>
+    <div class="py-4 mb-16 bg-gray-200">
+        <div class="flex px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <button class="h-12 px-4 mr-4 text-gray-700 bg-white rounded-lg shadow focus:outline-none" wire:click="resetFilters">
+                <i class="mr-2 text-xs fas fa-archway"></i>
                 Todos los cursos
             </button>
 
             <!-- Dropdown categorias -->
             <div class="relative mr-4" x-data="{ open: false }">
-                <button class="px-4 text-gray-700 block h-12 rounded-lg overflow-hidden focus:outline-none bg-white shadow" x-on:click="open = true">
-                    <i class="fas fa-tag text-sm mr-2"></i>
+                <button class="block h-12 px-4 overflow-hidden text-gray-700 bg-white rounded-lg shadow focus:outline-none" x-on:click="open = true">
+                    <i class="mr-2 text-sm fas fa-tag"></i>
                     Categoria
-                    <i class="fas fa-angle-down text-sm ml-2"></i>
+                    <i class="ml-2 text-sm fas fa-angle-down"></i>
                 </button>
                 <!-- Dropdown Body -->
-                <div class="absolute right-0 w-40 mt-2 py-2 bg-white border rounded shadow-xl" x-show="open" x-on:click.away="open = false">   
+                <div class="absolute right-0 w-40 py-2 mt-2 bg-white border rounded shadow-xl" x-show="open" x-on:click.away="open = false">   
                     @foreach ($categories as $category)
-                        <a class="cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white" wire:click="$set('category_id',{{$category->id}})" x-on:click="open = false">{{$category->name}}</a>
+                        <a class="block px-4 py-2 text-gray-900 transition-colors duration-200 rounded cursor-pointer text-normal hover:bg-blue-500 hover:text-white" wire:click="$set('category_id',{{$category->id}})" x-on:click="open = false">{{$category->name}}</a>
                     @endforeach
                 </div>
                 <!-- // Dropdown Body -->
@@ -26,25 +26,32 @@
 
             <!-- Dropdown niveles -->
             <div class="relative" x-data="{ open: false }">
-                <button class="px-4 text-gray-700 block h-12 rounded-lg overflow-hidden focus:outline-none bg-white shadow" x-on:click="open = true">
-                    <i class="fas fa-tag text-sm mr-2"></i>
+                <button class="block h-12 px-4 overflow-hidden text-gray-700 bg-white rounded-lg shadow focus:outline-none" x-on:click="open = true">
+                    <i class="mr-2 text-sm fas fa-tag"></i>
                     Niveles
-                    <i class="fas fa-angle-down text-sm ml-2"></i>
+                    <i class="ml-2 text-sm fas fa-angle-down"></i>
                 </button>
                 <!-- Dropdown Body -->
-                <div class="absolute right-0 w-40 mt-2 py-2 bg-white border rounded shadow-xl" x-show="open" x-on:click.away="open = false">   
+                <div class="absolute right-0 w-40 py-2 mt-2 bg-white border rounded shadow-xl" x-show="open" x-on:click.away="open = false">   
                     @foreach ($levels as $level)
-                        <a class="cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white" wire:click="$set('level_id',{{$level->id}})" x-on:click="open = false">{{$level->name}}</a>
+                        <a class="block px-4 py-2 text-gray-900 transition-colors duration-200 rounded cursor-pointer text-normal hover:bg-blue-500 hover:text-white" wire:click="$set('level_id',{{$level->id}})" x-on:click="open = false">{{$level->name}}</a>
                     @endforeach
                 </div>
                 <!-- // Dropdown Body -->
             </div>
             <!-- // Dropdown -->
 
+            @auth
+                <button class="h-12 px-4 ml-4 text-gray-700 bg-white rounded-lg shadow focus:outline-none" wire:click="resetFilters">
+                    <i class="mr-2 text-xs fas fa-archway"></i>
+                    Todos los cursos
+                </button>
+            @endauth
+
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
+    <div class="grid px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
 
         @foreach ($courses as $course)
             <x-course-card :course="$course" />
@@ -52,7 +59,7 @@
 
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 mb-8">
+    <div class="px-4 mx-auto mt-4 mb-8 max-w-7xl sm:px-6 lg:px-8">
         {{$courses->links()}}
     </div>
 
